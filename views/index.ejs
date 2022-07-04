@@ -9,11 +9,14 @@
     <link href="index.css" rel="stylesheet">
 </head>
 <body>
-    <form method="post">
+    <!-- input form -->
+    <form method="post" action="/">
+        <!-- two inputs in same row, side by side -->
         <div class="row">
             <div class="mb-3 column">
                 <label>Select Text Type</label>
-                <select class="form-select">
+                <select class="form-select" name="txt_type">
+                    <!-- txt is default -->
                     <option selected>txt</option>
                     <option>cpp</option>
                     <option>java</option>
@@ -23,7 +26,8 @@
             </div>
             <div class="mb-3 column">
                 <label>Select Expire Option</label>
-                <select class="form-select">
+                <select class="form-select" name="expire_option">
+                    <!-- one time read is default -->
                     <option selected>One Time Read</option>
                     <option>1hr</option>
                     <option>12hr</option>
@@ -33,15 +37,18 @@
                 </select>
             </div>
         </div>
+        <!-- checkbox and password field. Password will be enabled if checkbox is marked -->
         <div class="mb-3">
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" onchange="togglePasswordEnabled()">
+                <input class="form-check-input" type="checkbox" value="true" id="flexCheckDefault" name="pass_protected" onchange="togglePasswordEnabled()">
                 <label class="form-check-label" for="flexCheckDefault">
                   Protect With Password
                 </label>
             </div>
-            <input class="form-control" type="password" placeholder="Password" id="password" disabled>
+            <!-- initially password filed is disabled; min length 4, max lenght 12 -->
+            <input class="form-control" type="password" placeholder="Password" id="password" name="password" minlength="4" maxlength="12" disabled>
             <script>
+                // toggles password field enabled/disabled
                 function togglePasswordEnabled() {
                     var password = document.getElementById("password");
                     if (password.disabled) {
@@ -53,9 +60,11 @@
             </script>
         </div>
         <div class="mb-3">
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" placeholder="Paste here"></textarea>
+            <!-- paste texts in this field -->
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" placeholder="Paste here" name="text" required></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <!-- submit button -->
+        <input type="submit" class="btn btn-primary" name="submit_button" value="Paste!">
     </form>
 </body>
 </html>
