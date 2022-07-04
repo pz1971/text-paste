@@ -4,3 +4,9 @@ body{
     padding-top: 2%;
     padding-bottom: 2%;
 }
+.row{
+    display: flex;
+}
+.column{
+    flex: 50%;
+}
