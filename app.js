@@ -33,8 +33,9 @@ app.get('/', (req, res) => {
     res.render('index');
 })
 
-app.post('/', async (req, res) => {
+app.post('/paste', async (req, res) => {
     // get the data from the form
+    const id = nanoid();
     var text_type = req.body.text_type;
     var expire_option = req.body.expire_option;
     var password = req.body.password;
@@ -42,18 +43,37 @@ app.post('/', async (req, res) => {
 
     // insert a new text in db
     await Text.create({
-        _id : nanoid(),
+        _id : id,
         text_type: text_type,
         expire_option: expire_option,
         password: password,
         text: text
     }).then(() => {
-        console.log('Text inserted');
+        // console.log('Text inserted');
+        // redirect to the new page
+        res.redirect('/paste/' + id);
     }).catch(err => {
-        console.log('Error inserting text:', err.message);
+        // console.log('Error inserting text:', err.message);
+        res.send("Something Went Wrong");
     });
-
-    // TODO: redirect to the pasted page
 })
+
+app.get('/paste/:id', async (req, res) => {
+    // get the id from the url
+    const id = req.params.id;
+    try{
+        // get paste data from database
+        const paste = await Text.findOne({ _id: id }) ;
+        if(paste){
+            // render the paste page
+            res.render('paste', {password: paste.password, text: paste.text});
+        }
+        else{
+            res.send("Paste Not Found");
+        }
+    }catch(err){
+        res.send("Something Went Wrong");
+    }
+});
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
