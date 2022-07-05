@@ -1,5 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import { nanoid } from 'nanoid';
 import './env.js';
 import Text from './models/text.js';
 
@@ -41,12 +42,15 @@ app.post('/', async (req, res) => {
 
     // insert a new text in db
     await Text.create({
+        _id : nanoid(),
         text_type: text_type,
         expire_option: expire_option,
         password: password,
         text: text
     }).then(() => {
         console.log('Text inserted');
+    }).catch(err => {
+        console.log('Error inserting text:', err.message);
     });
 
     // TODO: redirect to the pasted page
