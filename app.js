@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import './env.js';
+import Text from './models/text.js';
 
 // connect to mongoDB
 mongoose.connect(process.env.MONGO_URI, {
@@ -31,15 +32,23 @@ app.get('/', (req, res) => {
     res.render('index');
 })
 
-app.post('/', (req, res) => {
+app.post('/', async (req, res) => {
     // get the data from the form
     var text_type = req.body.text_type;
     var expire_option = req.body.expire_option;
-    var pass_protected = req.body.pass_protected;
     var password = req.body.password;
     var text = req.body.text;
 
-    // TODO: store data in database
+    // insert a new text in db
+    await Text.create({
+        text_type: text_type,
+        expire_option: expire_option,
+        password: password,
+        text: text
+    }).then(() => {
+        console.log('Text inserted');
+    });
+
     // TODO: redirect to the pasted page
 })
 

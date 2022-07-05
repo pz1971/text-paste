@@ -15,7 +15,7 @@
         <div class="row">
             <div class="mb-3 column">
                 <label>Select Text Type</label>
-                <select class="form-select" name="txt_type">
+                <select class="form-select" name="text_type">
                     <!-- txt is default -->
                     <option selected>txt</option>
                     <option>cpp</option>
@@ -27,13 +27,14 @@
             <div class="mb-3 column">
                 <label>Select Expire Option</label>
                 <select class="form-select" name="expire_option">
-                    <!-- one time read is default -->
-                    <option selected>One Time Read</option>
-                    <option>1hr</option>
-                    <option>12hr</option>
+                    <!-- Never is default -->
+                    <option selected>never</option>
+                    <option>1h</option>
+                    <option>12h</option>
                     <option>1d</option>
-                    <option>2d</option>
                     <option>1w</option>
+                    <option>1m</option>
+                    <option>1y</option>
                 </select>
             </div>
         </div>
@@ -55,6 +56,8 @@
                         password.disabled = false;
                     } else {
                         password.disabled = true;
+                        // clear password field
+                        password.value = "";
                     }
                 }
             </script>
