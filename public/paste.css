@@ -7,14 +7,14 @@
     padding-right: 1ch;
 }
 tr:nth-child(odd){
-    background-color:rgb(235, 225, 255);
+    background-color:rgb(240, 230, 255);
     width: auto;
     display: block;
     padding-top: 0.3ch;
     padding-bottom: 0.3ch;
 }
 tr:nth-child(even){
-    background-color: #d9ffe3;
+    background-color: #dcfce4;
     width: auto;
     display: block;
     padding-top: 0.3ch;
@@ -51,4 +51,20 @@ body{
 .font-size-selector-label{
     align-self: center;
     padding-right: 1ch;
+}
+.paste-info{
+    display: flex;
+}
+.author-name{
+    margin-left: 1ch;
+    margin-right: 1ch;
+    font-size: larger;
+    text-align: center;
+    background-color: antiquewhite;
+}
+.create-time{
+    padding-left: 2ch;
+    padding-right: 2ch;
+    font-size: small;
+    align-self: center;
 }

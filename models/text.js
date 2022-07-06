@@ -9,7 +9,14 @@ const textSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    password: String,
+    author: {
+        type: String,
+        default: "Anonymous"
+    },
+    password: {
+        type: String,
+        default: ""
+    },
     text_type: {
         type: String,
         enum: ['cpp', 'java', 'js', 'py', 'txt'],

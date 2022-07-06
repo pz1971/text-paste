@@ -40,6 +40,7 @@ app.post('/p', async (req, res) => {
     var expire_option = req.body.expire_option;
     var password = req.body.password;
     var text = req.body.text;
+    var author = req.body.author;
 
     // insert a new text in db
     await Text.create({
@@ -47,7 +48,8 @@ app.post('/p', async (req, res) => {
         text_type: text_type,
         expire_option: expire_option,
         password: password,
-        text: text
+        text: text,
+        author: author
     }).then(() => {
         // console.log('Text inserted');
         // redirect to the new page
@@ -66,7 +68,7 @@ app.get('/p/:id', async (req, res) => {
         const paste = await Text.findOne({ _id: id }) ;
         if(paste){
             // render the paste page
-            res.render('paste', {password: paste.password, text:paste.text, text_type: paste.text_type});
+            res.render('paste', {password: paste.password, text:paste.text, text_type: paste.text_type, author: paste.author, createdAt: paste.createdAt});
         }
         else{
             res.send("Paste Not Found");
