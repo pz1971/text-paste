@@ -33,7 +33,7 @@ app.get('/', (req, res) => {
     res.render('index');
 })
 
-app.post('/paste', async (req, res) => {
+app.post('/p', async (req, res) => {
     // get the data from the form
     const id = nanoid();
     var text_type = req.body.text_type;
@@ -51,14 +51,14 @@ app.post('/paste', async (req, res) => {
     }).then(() => {
         // console.log('Text inserted');
         // redirect to the new page
-        res.redirect('/paste/' + id);
+        res.redirect('/p/' + id);
     }).catch(err => {
         // console.log('Error inserting text:', err.message);
         res.send("Something Went Wrong");
     });
 })
 
-app.get('/paste/:id', async (req, res) => {
+app.get('/p/:id', async (req, res) => {
     // get the id from the url
     const id = req.params.id;
     try{

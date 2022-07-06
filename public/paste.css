@@ -1,0 +1,38 @@
+.hljs-ln-n{
+    padding-right: 3ch;
+    padding-left: 1ch;
+    color: black;
+    font-weight: bold;
+}
+tr:nth-child(odd){
+    background-color:rgb(211, 188, 248);
+    width: auto;
+    display: block;
+    padding-top: 0.3ch;
+    padding-bottom: 0.3ch;
+}
+tr:nth-child(even){
+    background-color: #d9ffe4;
+    width: auto;
+    display: block;
+    padding-top: 0.3ch;
+    padding-bottom: 0.3ch;
+}
+table{
+    width: auto;
+    display: block;   
+}
+tbody{
+    width: auto;
+    display: block;   
+}
+code{
+    /* width: fit-content; */
+    font-size: 12px;
+}
+body{
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
