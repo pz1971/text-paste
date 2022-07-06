@@ -66,7 +66,7 @@ app.get('/paste/:id', async (req, res) => {
         const paste = await Text.findOne({ _id: id }) ;
         if(paste){
             // render the paste page
-            res.render('paste', {password: paste.password, text: paste.text});
+            res.render('paste', {password: paste.password, text:paste.text, text_type: paste.text_type});
         }
         else{
             res.send("Paste Not Found");
