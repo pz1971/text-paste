@@ -5,14 +5,14 @@
     font-weight: bold;
 }
 tr:nth-child(odd){
-    background-color:rgb(211, 188, 248);
+    background-color:rgb(235, 225, 255);
     width: auto;
     display: block;
     padding-top: 0.3ch;
     padding-bottom: 0.3ch;
 }
 tr:nth-child(even){
-    background-color: #d9ffe4;
+    background-color: #d9ffe3;
     width: auto;
     display: block;
     padding-top: 0.3ch;
@@ -27,12 +27,26 @@ tbody{
     display: block;   
 }
 code{
-    /* width: fit-content; */
-    font-size: 12px;
+    border-color: black;
+    border-style: solid;
 }
 body{
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-left: 10%;
+    padding-right: 10%;
     padding-top: 2%;
     padding-bottom: 2%;
+}
+.copy-btn-and-font-size-selector{
+    display: flex;
+    flex-direction: row;
+}
+.copy-button{
+    margin-left: auto;
+}
+.font-size-selector{
+    width: 10%;
+}
+.font-size-selector-label{
+    align-self: center;
+    padding-right: 1ch;
 }
