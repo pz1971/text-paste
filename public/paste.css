@@ -1,8 +1,10 @@
 .hljs-ln-n{
-    padding-right: 3ch;
+    margin-right: 3ch;
     padding-left: 1ch;
     color: black;
     font-weight: bold;
+    border-right: solid;
+    padding-right: 1ch;
 }
 tr:nth-child(odd){
     background-color:rgb(235, 225, 255);
