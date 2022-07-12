@@ -37,12 +37,23 @@
 </head>
 
 <body>
-    <!-- title -->
-    <% if (title == "Untitled") { %>
-        <h2 class="untitled"><%= title %></h2> 
-    <% } else { %>
-        <h2><%= title %></h2>
-    <% } %>
+    <div class="title-and-urlCopyButton">
+        <!-- copy url button -->
+        <button class="btn btn-outline-success btn-sm copy-url-button" onclick="copyURLToClipboard()"><strong>Copy URL</strong></button>
+        <!-- title -->
+        <% if (title == "Untitled") { %>
+            <h2 class="untitled"><%= title %></h2> 
+        <% } else { %>
+            <h2><%= title %></h2>
+        <% } %>
+        <script>
+            function copyURLToClipboard(){
+                const url = window.location.href;
+                navigator.clipboard.writeText(url);
+                alert("url copied: " + url);
+            }
+        </script>
+    </div>
     <div class="paste-info">
         Pasted by <h4 class="author-name"><%= author %></h4> at <div class="create-time"><%= createdAt %></div>
     </div>
@@ -59,8 +70,8 @@
                 <% } %> 
             <% } %>
         </select>
-        <!-- copy button -->
-        <button type="button" class="btn btn-outline-dark btn-sm copy-button" onclick="copyTextToClipboard()"><strong>Copy Text</strong></button>
+        <!-- copy text button -->
+        <button class="btn btn-outline-dark btn-sm copy-button" onclick="copyTextToClipboard()"><strong>Copy Text</strong></button>
     </div>
     <!-- code block -->
     <div>
