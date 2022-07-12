@@ -42,16 +42,33 @@ app.post('/p', async (req, res) => {
     var password = req.body.password;
     var text = req.body.text;
     var author = req.body.author;
+    
+    // set expireAt
+    var expireat = new Date();
+    if(expire_option == '1h') 
+        expireat.setHours(expireat.getHours() + 1);
+    else if(expire_option == '12h')
+        expireat.setHours(expireat.getHours() + 12);
+    else if(expire_option == '1d')
+        expireat.setDate(expireat.getDate() + 1);
+    else if(expire_option == '1w')
+        expireat.setDate(expireat.getDate() + 7);
+    else if(expire_option == '1m')
+        expireat.setMonth(expireat.getMonth() + 1);
+    else if(expire_option == '1y')
+        expireat.setFullYear(expireat.getFullYear() + 1);
+    else
+        expireat = null;
 
     // insert a new text in db
     await Text.create({
         _id : id,
         title : title,
         text_type: text_type,
-        expire_option: expire_option,
         password: password,
         text: text,
-        author: author
+        author: author,
+        expireAt: expireat
     }).then(() => {
         // console.log('Text inserted');
         // redirect to the new page
