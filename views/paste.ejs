@@ -37,6 +37,12 @@
 </head>
 
 <body>
+    <!-- title -->
+    <% if (title == "Untitled") { %>
+        <h2 class="untitled"><%= title %></h2> 
+    <% } else { %>
+        <h2><%= title %></h2>
+    <% } %>
     <div class="paste-info">
         Pasted by <h4 class="author-name"><%= author %></h4> at <div class="create-time"><%= createdAt %></div>
     </div>

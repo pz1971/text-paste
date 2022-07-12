@@ -9,6 +9,10 @@ const textSchema = new Schema({
         type: Date,
         default: Date.now
     },
+    title: {
+        type: String,
+        default: "Untitled"
+    },
     author: {
         type: String,
         default: "Anonymous"

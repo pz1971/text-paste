@@ -36,6 +36,7 @@ app.get('/', (req, res) => {
 app.post('/p', async (req, res) => {
     // get the data from the form
     const id = nanoid();
+    var title = req.body.title;
     var text_type = req.body.text_type;
     var expire_option = req.body.expire_option;
     var password = req.body.password;
@@ -45,6 +46,7 @@ app.post('/p', async (req, res) => {
     // insert a new text in db
     await Text.create({
         _id : id,
+        title : title,
         text_type: text_type,
         expire_option: expire_option,
         password: password,
@@ -65,10 +67,14 @@ app.get('/p/:id', async (req, res) => {
     const id = req.params.id;
     try{
         // get paste data from database
-        const paste = await Text.findOne({ _id: id }) ;
+        var paste = await Text.findOne({ _id: id }) ;
         if(paste){
             // render the paste page
-            res.render('paste', {password: paste.password, text:paste.text, text_type: paste.text_type, author: paste.author, createdAt: paste.createdAt});
+            if(paste.author == "")
+                paste.author = "Anonymous";
+            if(paste.title == "")
+                paste.title = "Untitled";
+            res.render('paste', {password: paste.password, title:paste.title, text:paste.text, text_type: paste.text_type, author: paste.author, createdAt: paste.createdAt});
         }
         else{
             res.send("Paste Not Found");
