@@ -50,6 +50,7 @@
         <!-- select font size -->
         <label class="font-size-selector-label" for="font-size-selector"><strong>Font Size</strong></label>
         <select class="form-select font-size-selector" onchange="updateFontSize()">
+            <!-- size from 1 to 100, 11 is default -->
             <% for( let i = 1; i <= 100; i++ ) { %>
                 <% if (i == 11) { %>
                     <option value="<%= i %>" selected><%= i %></option>
