@@ -71,11 +71,19 @@ body{
 .untitled{
     color: gray;
 }
-.title-and-urlCopyButton{
+.title-urlCopyButton-views{
     display: flex;
     flex-direction: row;
     padding-bottom: 2ch;
 }
 .copy-url-button{
     margin-right: 2ch;
+}
+.views{
+    margin-left: auto;
+    font-size: larger;
+}
+.views-number{
+    font-size: x-large;
+    color: green
 }

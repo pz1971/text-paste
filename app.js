@@ -83,15 +83,21 @@ app.get('/p/:id', async (req, res) => {
     // get the id from the url
     const id = req.params.id;
     try{
-        // get paste data from database
-        var paste = await Text.findOne({ _id: id }) ;
+        // find document by id and increment the views and return the document
+        const paste = await Text.findByIdAndUpdate({_id: id}, { $inc: { views: 1 } }, { new: true });
         if(paste){
             // render the paste page
             if(paste.author == "")
                 paste.author = "Anonymous";
             if(paste.title == "")
                 paste.title = "Untitled";
-            res.render('paste', {password: paste.password, title:paste.title, text:paste.text, text_type: paste.text_type, author: paste.author, createdAt: paste.createdAt});
+            res.render('paste', {   password: paste.password, 
+                                    title:paste.title, 
+                                    text:paste.text, 
+                                    text_type: paste.text_type, 
+                                    author: paste.author, 
+                                    createdAt: paste.createdAt, 
+                                    views: paste.views });
         }
         else{
             res.send("Paste Not Found");

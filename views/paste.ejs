@@ -37,7 +37,7 @@
 </head>
 
 <body>
-    <div class="title-and-urlCopyButton">
+    <div class="title-urlCopyButton-views">
         <!-- copy url button -->
         <button class="btn btn-outline-success btn-sm copy-url-button" onclick="copyURLToClipboard()"><strong>Copy URL</strong></button>
         <!-- title -->
@@ -46,6 +46,11 @@
         <% } else { %>
             <h2><%= title %></h2>
         <% } %>
+        <!-- views -->
+        <div class="views">
+            <span class="views-label">views 👀 : </span>
+            <span class="views-number"><%= views %></span>
+        </div>
         <script>
             function copyURLToClipboard(){
                 const url = window.location.href;
