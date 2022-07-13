@@ -31,4 +31,6 @@ const textSchema = new Schema({
     }
 }, { _id: false })
 
+textSchema.index( { "expireAt": 1 }, { expireAfterSeconds: 0 } );
+
 export default mongoose.model('Text', textSchema);
