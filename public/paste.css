@@ -43,6 +43,9 @@ body{
     flex-direction: row;
 }
 .copy-button{
+    margin-left: 2ch;
+}
+.download-button{
     margin-left: auto;
 }
 .font-size-selector{
