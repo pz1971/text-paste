@@ -38,6 +38,9 @@
 </head>
 
 <body>
+    <!-- include header ejs -->
+    <%- include('header.ejs') %>
+    
     <div class="title-urlCopyButton-views">
         <!-- copy url button -->
         <button class="btn btn-outline-success btn-sm copy-url-button" onclick="copyURLToClipboard()"><strong>Copy URL</strong></button>
@@ -103,6 +106,9 @@
             saveAs(blob, "<%= title %>.<%= text_type %>");
         }
     </script>
+
+    <!-- include footer ejs -->
+    <%- include('footer.ejs') %>
 </body>
 
 </html>

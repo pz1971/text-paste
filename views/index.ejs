@@ -9,6 +9,8 @@
     <link href="index.css" rel="stylesheet">
 </head>
 <body>
+    <!-- include header ejs -->
+    <%- include('header.ejs') %>
     <!-- input form -->
     <form method="post" action="/p">
         <!-- title -->
@@ -79,5 +81,7 @@
         <!-- submit button -->
         <input type="submit" class="btn btn-primary" name="submit_button" value="Paste!">
     </form>
+    <!-- include footer ejs -->
+    <%- include('footer.ejs') %>
 </body>
 </html>
