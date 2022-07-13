@@ -89,7 +89,7 @@
     </div>
     <script>
         function copyTextToClipboard(){
-            var copyText = `<%= text %>`;
+            var copyText = `<%- text %>`;
             navigator.clipboard.writeText(copyText);
             alert("Copied the text!");
         }
@@ -98,7 +98,7 @@
             document.querySelector("code").style.fontSize = fontSize + "pt";
         }
         function downloadContent(){
-            var text = `<%= text %>`;
+            var text = `<%- text %>`;
             var blob = new Blob([text], {type: "text/plain;charset=utf-8"});
             saveAs(blob, "<%= title %>.<%= text_type %>");
         }
