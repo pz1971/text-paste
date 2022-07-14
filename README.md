@@ -28,6 +28,7 @@ A simple web application to store text data and preview it with syntax highlight
 - [bootstrap](https://getbootstrap.com/)
 - [prism.js](https://prismjs.com/)
 - [nanoid](https://www.npmjs.com/package/nanoid)
+- [recaptcha](https://www.google.com/recaptcha/)
 
 Please go through the package.json file for more information.
 
