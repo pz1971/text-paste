@@ -8,12 +8,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="index.css" rel="stylesheet">
     <link rel="icon" href="icon.png" type="image/icon type">
+    <!-- reacaptcha script -->
+    <script src="https://www.google.com/recaptcha/api.js"></script>
 </head>
 <body>
     <!-- include header ejs -->
     <%- include('header.ejs') %>
     <!-- input form -->
-    <form method="post" action="/p">
+    <form method="post" action="/p" id="paste-form">
         <!-- title -->
         <div class="mb-3">
             <label for="title">Title</label>
@@ -77,11 +79,35 @@
         </div>
         <div class="mb-3">
             <!-- paste texts in this field -->
-            <textarea class="form-control" rows="10" placeholder="Paste here" name="text" required></textarea>
+            <textarea class="form-control" rows="10" placeholder="Paste here" name="text" id="text" required></textarea>
         </div>
         <!-- submit button -->
-        <input type="submit" class="btn btn-primary" name="submit_button" value="Paste!">
+        <input type="submit" class="btn btn-primary g-recaptcha" name="submit_button" value="Paste!" data-sitekey="6LdbxO4gAAAAAGSL9WP5Vph-VHlREF_ZSZiVqwVf" 
+        data-callback='onSubmit' 
+        data-action='submit'>
     </form>
+    <script>
+        function onSubmit(token) {
+            // get text of textarea
+            var text = document.getElementById("text").value;
+            if(text == "") {
+                alert('Please paste some text!');
+                return false;
+            }
+            // check if checkbox is marked
+            var pass_protected = document.getElementById("flexCheckDefault").checked;
+            if(pass_protected) {
+                // get password
+                var password = document.getElementById("password").value;
+                // check if password length is between 4 and 12
+                if(password.length < 4 || password.length > 12) {
+                    alert('Password length must be between 4 and 12!');
+                    return false;
+                }
+            }
+            document.getElementById("paste-form").submit();
+        }
+    </script>
     <!-- include footer ejs -->
     <%- include('footer.ejs') %>
 </body>
