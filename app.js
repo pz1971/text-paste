@@ -14,7 +14,7 @@ mongoose.connect(process.env.MONGO_URI, {
 });
 
 // port no.
-const port = process.env.PORT;
+const port = process.env.PORT || 5000;
 
 // express app
 const app = express();
