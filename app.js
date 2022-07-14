@@ -1,7 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import { nanoid } from 'nanoid';
-import './env.js';
+// import './env.js';
 import Text from './models/text.js';
 
 // connect to mongoDB
